@@ -201,6 +201,8 @@
     white-space:nowrap;
   }
   td.name{font-family:'Inter',sans-serif;color:var(--text);}
+  td.num{text-align:right;font-variant-numeric:tabular-nums;}
+  th.num{text-align:right;}
   tr:last-child td{border-bottom:none;}
   tr:hover td{background:var(--surface-2);}
 
@@ -278,9 +280,9 @@
         </div>
       </details>
       <details class="faq-item">
-        <summary>Werden nur die Trades der 22 festen Teilnehmer gezählt?</summary>
+        <summary>Werden nur die Trades der 24 festen Teilnehmer-Zuordnungen gezählt?</summary>
         <div class="faq-a">
-          <p>Nein, nicht überall: Die Auswertungen zu <strong>Prämieneinnahmen</strong>, <strong>Weekly/Monthly</strong> und <strong>Delta-Performance</strong> werten grundsätzlich alle Zeilen im TJ-Tab aus, unabhängig von einer Teilnehmerzuordnung. Nur der Tab <strong>Teilnehmer &amp; Basiswerte</strong> arbeitet mit der festen 22er-Liste – und im <strong>Issues</strong>-Tab prüft genau deshalb ein eigener Check, ob es Ticker ohne Teilnehmer-Zuordnung gibt.</p>
+          <p>Nein, nicht überall: Die Auswertungen zu <strong>Prämieneinnahmen</strong>, <strong>Weekly/Monthly</strong> und <strong>Delta-Performance</strong> werten grundsätzlich alle Zeilen im TJ-Tab aus, unabhängig von einer Teilnehmerzuordnung. Nur der Tab <strong>Teilnehmer &amp; Basiswerte</strong> arbeitet mit der festen 24er-Liste – und im <strong>Issues</strong>-Tab prüft genau deshalb ein eigener Check, ob es Ticker ohne Teilnehmer-Zuordnung gibt.</p>
         </div>
       </details>
       <details class="faq-item">
@@ -398,7 +400,7 @@
       <details class="faq-item">
         <summary>Wie werden „Offene CSP-Rücklage" und „Gehaltene Aktien" berechnet?</summary>
         <div class="faq-a">
-          <p>CSP-Rücklage = Strike × 100 × Anzahl Kontrakte, für alle PUT-Positionen mit Auslaufdatum nach heute. Gehaltene Aktien stammen aus dem Tab „🔄 Aktien im Cashflowcycle" (Anzahl × Ø-Einstiegspreis). Beides wird über alle 22 Teilnehmer hinweg aggregiert.</p>
+          <p>CSP-Rücklage = Strike × 100 × Anzahl Kontrakte, für alle PUT-Positionen mit Auslaufdatum nach heute. Gehaltene Aktien stammen aus dem Tab „🔄 Aktien im Cashflowcycle" (Anzahl × Ø-Einstiegspreis). Beides wird über alle 24 Teilnehmer-Zuordnungen hinweg aggregiert.</p>
         </div>
       </details>
     </div>
@@ -407,28 +409,35 @@
   <!-- ============ TEILNEHMER & BASISWERTE ============ -->
   <section id="teilnehmer">
     <h2>Teilnehmer &amp; Basiswerte <span class="tag">wer handelt welchen Ticker?</span></h2>
-    <p class="hint">Feste Zuordnung der Community-Teilnehmer zu ihrem Basiswert – manuell im Dashboard gepflegt, nicht live an das Sheet gekoppelt. Wer einen Ticker abgibt oder übernimmt, sollte das dem Dashboard-Pfleger melden, damit diese Liste stimmt.</p>
+    <p class="hint">Feste Zuordnung der Community-Teilnehmer zu ihrem Basiswert – manuell im Dashboard gepflegt, nicht live an das Sheet gekoppelt. Wer einen Ticker abgibt oder übernimmt, sollte das dem Dashboard-Pfleger melden, damit diese Liste stimmt. Kurs und Anzahl Optionen entsprechen dem Budgetrahmen bei Zuteilung des Basiswerts.</p>
     <div class="datatable-wrap">
       <table>
-        <thead><tr><th>Teilnehmer</th><th>Ticker</th></tr></thead>
+        <thead><tr><th>Teilnehmer</th><th>Ticker</th><th class="num">Kurs</th><th class="num">Anzahl Optionen</th></tr></thead>
         <tbody>
-          <tr><td class="name">Monika Rötsch</td><td>BAC</td></tr>
-          <tr><td class="name">Yvonne Wanders</td><td>BE</td></tr>
-          <tr><td class="name">Theo</td><td>CSCO</td></tr>
-          <tr><td class="name">Robert</td><td>DELL</td></tr>
-          <tr><td class="name">Franzi</td><td>DOCU</td></tr>
-          <tr><td class="name">Martin Eischer</td><td>DPST</td></tr>
-          <tr><td class="name">Torsten Naumann</td><td>GDX</td></tr>
-          <tr><td class="name">Christoph Braun</td><td>HL, TGT</td></tr>
-          <tr><td class="name">Veit</td><td>IREN</td></tr>
-          <tr><td class="name">Claudia Kirchhoff</td><td>KO, TQQQ</td></tr>
-          <tr><td class="name">Ewald</td><td>MU</td></tr>
-          <tr><td class="name">Norbert U.</td><td>NVDL</td></tr>
-          <tr><td class="name">Felicitas</td><td>OUST, SPCX</td></tr>
-          <tr><td class="name">Susanne SR</td><td>RKLB</td></tr>
-          <tr><td class="name">Britta</td><td>SOFI</td></tr>
-          <tr><td class="name">Martin W.</td><td>SOXL, UPRO</td></tr>
-          <tr><td class="name">Razvan</td><td>AAPL, AMD</td></tr>
+          <tr><td class="name">Razvan</td><td>AAPL</td><td class="num">$309.35</td><td class="num">3</td></tr>
+          <tr><td class="name">Razvan</td><td>AMD</td><td class="num">$476.25</td><td class="num">2</td></tr>
+          <tr><td class="name">Monika Rötsch</td><td>BAC</td><td class="num">$61.69</td><td class="num">16</td></tr>
+          <tr><td class="name">Yvonne Wanders</td><td>BE</td><td class="num">$210.63</td><td class="num">5</td></tr>
+          <tr><td class="name">Theo</td><td>CSCO</td><td class="num">$123.88</td><td class="num">8</td></tr>
+          <tr><td class="name">Robert</td><td>DELL</td><td class="num">$453.77</td><td class="num">2</td></tr>
+          <tr><td class="name">Franzi</td><td>DOCU</td><td class="num">$59.00</td><td class="num">16</td></tr>
+          <tr><td class="name">Martin Eischer</td><td>DPST</td><td class="num">$149.63</td><td class="num">6</td></tr>
+          <tr><td class="name">Torsten Naumann</td><td>GDX</td><td class="num">$89.89</td><td class="num">11</td></tr>
+          <tr><td class="name">Christoph Braun</td><td>HL</td><td class="num">$18.83</td><td class="num">50</td></tr>
+          <tr><td class="name">Stefka</td><td>HPE</td><td class="num">$52.00</td><td class="num">20</td></tr>
+          <tr><td class="name">Veit</td><td>IREN</td><td class="num">$40.85</td><td class="num">24</td></tr>
+          <tr><td class="name">Claudia Kirchhoff</td><td>KO</td><td class="num">$87.71</td><td class="num">11</td></tr>
+          <tr><td class="name">Susanne SR</td><td>KORU</td><td class="num">$23.47</td><td class="num">34</td></tr>
+          <tr><td class="name">Ewald</td><td>MU</td><td class="num">$971.66</td><td class="num">1</td></tr>
+          <tr><td class="name">Norbert U.</td><td>NVDL</td><td class="num">$36.71</td><td class="num">26</td></tr>
+          <tr><td class="name">Felicitas</td><td>OUST</td><td class="num">$48.71</td><td class="num">20</td></tr>
+          <tr><td class="name">Susanne SR</td><td>RKLB</td><td class="num">$80.25</td><td class="num">12</td></tr>
+          <tr><td class="name">Britta</td><td>SOFI</td><td class="num">$18.29</td><td class="num">53</td></tr>
+          <tr><td class="name">Martin W.</td><td>SOXL</td><td class="num">$132.33</td><td class="num">7</td></tr>
+          <tr><td class="name">Felicitas</td><td>SPCX</td><td class="num">$140.00</td><td class="num">7</td></tr>
+          <tr><td class="name">Christoph Braun</td><td>TGT</td><td class="num">$154.48</td><td class="num">6</td></tr>
+          <tr><td class="name">Claudia Kirchhoff</td><td>TQQQ</td><td class="num">$72.03</td><td class="num">13</td></tr>
+          <tr><td class="name">Martin W.</td><td>UPRO</td><td class="num">$154.53</td><td class="num">6</td></tr>
         </tbody>
       </table>
     </div>
@@ -469,7 +478,7 @@
       </div>
       <div class="issue">
         <div class="name"><span class="num">06</span>Ticker ohne Teilnehmer-Zuordnung</div>
-        <div class="desc">Es wurden Trades zu einem Ticker erfasst, der keinem der 22 festen Teilnehmer zugeordnet ist (siehe Tab „Teilnehmer &amp; Basiswerte").</div>
+        <div class="desc">Es wurden Trades zu einem Ticker erfasst, der keiner der 24 festen Teilnehmer-Zuordnungen entspricht (siehe Tab „Teilnehmer &amp; Basiswerte").</div>
       </div>
       <div class="issue">
         <div class="name"><span class="num">07</span>Mögliche Duplikate</div>
@@ -623,7 +632,7 @@
       <details class="faq-item">
         <summary>Wann ist der nächste gemeinsame Live-Call zum Thema Weekly/Monthly?</summary>
         <div class="faq-a">
-          <p>Montag, 28. September, im Anschluss an den Stammtisch, gegen ca. 21:30 Uhr CET.</p>
+          <p>Montag, 7. September, im Anschluss an den Stammtisch, gegen ca. 21:30 Uhr CET.</p>
         </div>
       </details>
       <details class="faq-item">
